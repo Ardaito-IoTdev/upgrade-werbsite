@@ -15,9 +15,21 @@ const firebaseConfig = {
   measurementId: "G-HYRH6MD880",
 };
 
-/* ===== TELEGRAM CONFIG ===== */
-const TELEGRAM_BOT_TOKEN = "8963134859:AAHHGKGq2hnwoB_vPwCm7t_EWN7RAt9hwe4";
-const TELEGRAM_CHAT_ID = "6355650701";
+/* ========================================================
+   TELEGRAM — Sekarang Aman Lewat Proxy Workers
+   ======================================================== */
+async function sendToTelegram(name, category, message) {
+  try {
+    // Menembak URL Cloudflare Workers Lo yang sudah diperbaiki
+    await fetch(`https://db-api-telegram.dit021206.workers.dev/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, category, message }),
+    });
+  } catch (err) {
+    console.warn("Telegram failed:", err);
+  }
+}
 
 /* ========================================================
    PARTICLES — warna ikut tema aktif
@@ -61,25 +73,20 @@ function respawnParticles(theme) {
 const html = document.documentElement;
 
 function applyTheme(theme) {
-  // Set atribut ke <html> — CSS [data-theme] ikut otomatis
   html.setAttribute("data-theme", theme);
   localStorage.setItem("anan-theme", theme);
 
-  // Update active state tombol toggle 🌙/☀️
   document.querySelectorAll(".toggle-option").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.theme === theme);
   });
 
-  // Respawn partikel sesuai warna tema
   respawnParticles(theme);
 }
 
-// toggleTheme dipanggil dari onclick di HTML
 function toggleTheme(theme) {
   applyTheme(theme);
 }
 
-// Init tema dari localStorage pas pertama load
 applyTheme(localStorage.getItem("anan-theme") || "dark");
 
 /* ========================================================
@@ -126,32 +133,6 @@ try {
 }
 
 /* ========================================================
-   TELEGRAM — notif ke bot
-   ======================================================== */
-async function sendToTelegram(name, category, message) {
-  const text =
-    `🔔 *Pesan Baru di arcodes.my.id*\n\n` +
-    `👤 *Nama:* ${name}\n📂 *Kategori:* ${category}\n` +
-    `💬 *Pesan:*\n${message}\n\n🕐 ${new Date().toLocaleString("id-ID")}`;
-  try {
-    await fetch(
-      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text,
-          parse_mode: "Markdown",
-        }),
-      },
-    );
-  } catch (err) {
-    console.warn("Telegram failed:", err);
-  }
-}
-
-/* ========================================================
    SUBMIT FEEDBACK
    ======================================================== */
 async function submitFeedback() {
@@ -162,7 +143,19 @@ async function submitFeedback() {
   const btn = document.getElementById("submit-btn");
 
   if (!msg) {
-    status.textContent = "⚠️ Isi pesannya dulu dong!";
+    status.textContent = "⚠️ Isi pesannya dulu dong sayang!";
+    status.className = "form-status error";
+    return;
+  }
+
+  if (name.length > 60) {
+    status.textContent = "⚠️ itu nama atau tali rapia? panjang banget.";
+    status.className = "form-status error";
+    return;
+  }
+
+  if (msg.length > 1000) {
+    status.textContent = "⚠️ kalo curhat ada batasnya ya mas/mba, makasih :)!";
     status.className = "form-status error";
     return;
   }
@@ -182,10 +175,15 @@ async function submitFeedback() {
 
   try {
     if (!db) throw new Error("Firebase belum siap");
+
+    // 1. Simpan ke Firebase Realtime Database
     await db
       .ref("messages")
       .push({ name, category: catLabel, message: msg, timestamp: Date.now() });
+
+    // 2. Jalankan fungsi sendToTelegram aman yang mengarah ke Workers
     await sendToTelegram(name, catLabel, msg);
+
     status.textContent = "✅ Pesan terkirim! Makasih udah kasih feedback 🙏";
     status.className = "form-status success";
     document.getElementById("f-name").value = "";
@@ -263,7 +261,7 @@ function timeAgo(ts) {
    TESTIMONI SLIDER
    ======================================================== */
 (function initTestiSlider() {
-  const TOTAL = 5; // jumlah foto testimoni
+  const TOTAL = 5;
   let current = 0;
   let perView = getPerView();
   let maxIndex = TOTAL - perView;
@@ -273,7 +271,6 @@ function timeAgo(ts) {
 
   if (!track || !dotsEl) return;
 
-  // Bikin dots
   for (let i = 0; i < TOTAL; i++) {
     const d = document.createElement("div");
     d.className = "testi-dot" + (i === 0 ? " active" : "");
@@ -292,28 +289,23 @@ function timeAgo(ts) {
     maxIndex = TOTAL - perView;
     current = Math.max(0, Math.min(idx, maxIndex));
 
-    // Geser track
     const cardW = track.children[0].offsetWidth;
-    const gapPx = 20; // sesuai gap: 1.25rem
+    const gapPx = 20;
     track.style.transform = `translateX(-${current * (cardW + gapPx)}px)`;
 
-    // Update dots
     document.querySelectorAll(".testi-dot").forEach((d, i) => {
       d.classList.toggle("active", i === current);
     });
   }
 
-  // Expose ke global buat onclick di HTML
   window.testiSlide = function (dir) {
     goTo(current + dir);
   };
 
-  // Auto-play setiap 4 detik
   let autoplay = setInterval(() => {
     goTo(current >= maxIndex ? 0 : current + 1);
   }, 4000);
 
-  // Pause autoplay pas hover
   track.addEventListener("mouseenter", () => clearInterval(autoplay));
   track.addEventListener("mouseleave", () => {
     autoplay = setInterval(() => {
@@ -321,7 +313,6 @@ function timeAgo(ts) {
     }, 4000);
   });
 
-  // Swipe support di HP
   let startX = 0;
   track.addEventListener(
     "touchstart",
@@ -335,47 +326,38 @@ function timeAgo(ts) {
     if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
   });
 
-  // Recalculate kalau resize
   window.addEventListener("resize", () => goTo(current));
 })();
 
 /* ========================================================
-   RANDOM FOTO PROFIL — ganti tiap beberapa detik
-   me1.jpeg sampai me5.jpeg
+   RANDOM FOTO PROFIL
    ======================================================== */
 (function initProfileRotator() {
   const TOTAL = 5;
-  const DELAY = 3500; // ganti tiap 3.5 detik
+  const DELAY = 3500;
   const img = document.getElementById("heroImg");
   if (!img) return;
 
   const photos = Array.from({ length: TOTAL }, (_, i) => `src/me${i + 1}.jpeg`);
 
-  // Acak urutan awal biar ga linear
   photos.sort(() => Math.random() - 0.5);
 
   let idx = 0;
-
-  // Set foto pertama random (bukan selalu me1)
   img.src = photos[idx];
 
   function rotatePhoto() {
-    // Fade out
     img.classList.add("fade-switch");
 
     setTimeout(() => {
       idx = (idx + 1) % TOTAL;
       img.src = photos[idx];
 
-      // Fade in pas foto loaded
       img.onload = () => img.classList.remove("fade-switch");
-      // Fallback kalau gambar error (file belum ada dll)
       img.onerror = () => {
         img.classList.remove("fade-switch");
       };
-    }, 450); // tunggu fade out kelar
+    }, 450);
   }
 
-  // Mulai rotasi
   setInterval(rotatePhoto, DELAY);
 })();
