@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anandito Ernanda — IoT Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Anti-flash: terapkan tema sebelum render -->
+  <script>
+    (function() {
+      const t = localStorage.getItem('anan-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<!-- ======== NAVBAR ======== -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Anan.dev</a>
+  <ul class="nav-links" id="navlinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#testimoni">Testimoni</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="theme-toggle" role="group" aria-label="Pilih tema">
+      <div class="toggle-option active" data-theme="dark" onclick="toggleTheme('dark')" title="Dark Mode">🌙</div>
+      <div class="toggle-option" data-theme="light" onclick="toggleTheme('light')" title="Light Mode">☀️</div>
+    </div>
+    <a href="#feedback" class="nav-cta">Kasih Saran</a>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ======== HERO ======== -->
+<section class="hero">
+  <div class="hero-orb orb-1"></div>
+  <div class="hero-orb orb-2"></div>
+  <div class="hero-orb orb-3"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Available for Projects</div>
+      <h1>Anandito Ernanda (Arnand)<br><span>Junior IoT Developer</span></h1>
+      <p class="hero-sub">
+        Lulusan SMA Cikarang yang passionate di dunia IoT, Robotika & Elektronika.
+        Bikin alat pinter dari ide sampai jadi wkwwk— online & siap deploy.
+      </p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">🛒 Lihat Jasa</a>
+        <a href="https://wa.me/6287870330366" target="_blank" class="btn-secondary">💬 WhatsApp</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Years Experience</div></div>
+        <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Projects Done</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Competition Awards</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrap" id="heroImgWrap">
+        <!-- Orbit dekoratif -->
+        <div class="hero-orbit-2"></div>
+        <div class="hero-orbit-dot"></div>
+        <div class="hero-orbit-dot-2"></div>
+        <!-- Foto -->
+        <div class="hero-img-inner">
+          <img src="src/me1.jpeg" id="heroImg" alt="Anandito Ernanda"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="hero-img-placeholder" style="display:none;">AN</div>
+        </div>
+        <!-- Label nama kecil di bawah foto -->
+        <div class="hero-img-label">Anandito Ernanda</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== ABOUT ======== -->
+<section id="about">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Siapa itu Anan? 👋</h2>
+    </div>
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p>Haii! Gue <strong>Anandito Ernanda</strong> — atau panggil aja <strong>Anan</strong>. Seorang IoT Developer pemula dari <strong>Cikarang, Jawa Barat</strong> yang currently berumur 20 tahun.</p>
+        <p>Gue passionate banget di dunia <strong>Internet of Things, Elektronika, dan Robotik bisa dibilang</strong>. Mulai dari sensor-sensor kecil sampe sistem kompleks yang connect ke cloud — suka lah sama hal begituan.</p>
+        <p>Selain ngoding, gue juga sharing konten seputar programming, IoT, dan tips teknis buat yang mau belajar di bidang yang sama.</p>
+        <p>Selain dunia programming, gue punya ketertarikan luar biasa juga pada bidang sains apalagi astronomi :D, demen aja gitu liat benda langit kaya komet, bintang, galaxy dan lain sebagainya :)</p>
+        <p>Apalagi ya?? sama ini sih, gue <strong>JONES (JOMBLO NGENES)</strong> btw, HAHAHAHA. Terimakasih yach, sudah mampir ke website sederhana ini :P</p>
+        <div class="about-tags">
+          <span class="tag">🤖 IoT</span>
+          <span class="tag">⚡ Electronic</span>
+          <span class="tag">🔩 Robotics</span>
+          <span class="tag">📡 Wireless Comms</span>
+          <span class="tag">☁️ Cloud IoT</span>
+          <span class="tag">🎓 Electrical Engineering</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="info-row"><span class="info-label">📍 Lokasi</span><span class="info-val">Cikarang, Jawa Barat</span></div>
+        <div class="info-row"><span class="info-label">🎂 Usia</span><span class="info-val">19 Tahun</span></div>
+        <div class="info-row"><span class="info-label">🎓 Pendidikan</span><span class="info-val">Lulusan SMA 2025</span></div>
+        <div class="info-row"><span class="info-label">💼 Status</span><span class="info-val" style="color:var(--accent-3);font-weight:600;">Open for Order and Collaboration ✓</span></div>
+        <div class="info-row"><span class="info-label">📬 Email</span><span class="info-val">arnan.technology@gmail.com</span></div>
+        <div class="info-row"><span class="info-label">💬 WhatsApp</span><span class="info-val">+62 878-7033-0366</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== SKILLS ======== -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Skills & Tools</div>
+      <h2 class="section-title">Yang Gue Bisa 🛠️</h2>
+      <p class="section-desc">Rangkaian skill yang udah gue asah dari berbagai project nyata — sekolah, lomba, sampe client.</p>
+    </div>
+
+    <div class="skills-cat-title fade-up">🔌 Hardware & Microcontroller</div>
+    <div class="skills-grid fade-up">
+      <div class="skill-card">
+        <img src="src/Arduino.png" class="skill-icon" alt="Arduino"
+          onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg'">
+        <span class="skill-name">Arduino</span><span class="skill-level level-expert">Expert</span>
+      </div>
+      <div class="skill-card">
+        <img src="src/ESP-bg-fix.png" class="skill-icon" alt="ESP8266/32" onerror="this.style.opacity='0.3'">
+        <span class="skill-name">ESP8266/32</span><span class="skill-level level-expert">Expert</span>
+      </div>
+      <div class="skill-card">
+        <img src="src/IoT.jpeg" class="skill-icon" alt="IoT" onerror="this.style.opacity='0.3'">
+        <span class="skill-name">IoT Systems</span><span class="skill-level level-expert">Expert</span>
+      </div>
+      <div class="skill-card">
+        <img src="src/tinkercad.png" class="skill-icon" alt="Tinkercad">
+        <span class="skill-name">Tinkercad</span><span class="skill-level level-mid">Proficient</span>
+      </div>
+      <div class="skill-card">
+        <img src="src/capcut.png" class="skill-icon" alt="Capcut">
+        <span class="skill-name">Capcut</span><span class="skill-level level-expert">Expert</span>
+      </div>
+    </div>
+
+    <div class="skills-cat-title fade-up">💻 Programming Languages</div>
+    <div class="skills-grid fade-up">
+      <div class="skill-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="skill-icon" alt="C++">
+        <span class="skill-name">C++</span><span class="skill-level level-mid">Proficient</span>
+      </div>
+      <div class="skill-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" class="skill-icon" alt="C">
+        <span class="skill-name">C</span><span class="skill-level level-mid">Proficient</span>
+      </div>
+      <div class="skill-card">
+        <img src="src/python.jpg" class="skill-icon" alt="Python">
+        <span class="skill-name">Python</span><span class="skill-level level-mid">Proficient</span>
+      </div>
+      <div class="skill-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" class="skill-icon" alt="HTML">
+        <span class="skill-name">HTML</span><span class="skill-level level-learning">Learning</span>
+      </div>
+      <div class="skill-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" class="skill-icon" alt="CSS">
+        <span class="skill-name">CSS</span><span class="skill-level level-learning">Learning</span>
+      </div>
+      <div class="skill-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" class="skill-icon" alt="JavaScript">
+        <span class="skill-name">JavaScript</span><span class="skill-level level-learning">Learning</span>
+      </div>
+      <div class="skill-card">
+        <img src="src/bash-command.jpg" class="skill-icon" alt="Bash">
+        <span class="skill-name">Bash</span><span class="skill-level level-learning">Learning</span>
+      </div>
+    </div>
+
+    <div class="skills-cat-title fade-up">☁️ Platforms & Tools</div>
+    <div class="tools-grid fade-up">
+      <div class="tool-pill"><span class="tool-dot"></span>Firebase</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Blynk IoT</div>
+      <div class="tool-pill"><span class="tool-dot"></span>ThingSpeak</div>
+      <div class="tool-pill"><span class="tool-dot"></span>MQTT</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Arduino Cloud</div>
+      <div class="tool-pill"><span class="tool-dot"></span>GitHub</div>
+      <div class="tool-pill"><span class="tool-dot"></span>WokWi</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Proteus</div>
+      <div class="tool-pill"><span class="tool-dot"></span>VS Code</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Arduino IDE</div>
+      <div class="tool-pill"><span class="tool-dot"></span>NodeMCU</div>
+    </div>
+
+    <div class="skills-cat-title fade-up">👨‍🎓 Personal Skill Improvement</div>
+    <div class="tools-grid fade-up">
+      <div class="tool-pill"><span class="tool-dot"></span>Editing</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Public Speaker</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== ACHIEVEMENTS ======== -->
+<section>
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Achievements</div>
+      <h2 class="section-title">Penghargaan 🏆</h2>
+    </div>
+    <div class="ach-list fade-up">
+      <div class="ach-item">
+        <div class="ach-icon">🥈</div>
+        <div><div class="ach-year">2024</div><div class="ach-title">Juara 2 — FOREST 2024</div><div class="ach-desc">Festival of Research, Science, and Technology</div></div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">🏅</div>
+        <div><div class="ach-year">2024</div><div class="ach-title">Top 10 Finalis — TELEPATI POLBAN 2024</div><div class="ach-desc">Internet of Things Challenge, Politeknik Negeri Bandung</div></div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">📜</div>
+        <div><div class="ach-year">2025</div><div class="ach-title">Sertifikat — Software Engineering 2025</div><div class="ach-desc">Certificate of Appreciation</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== SERVICES ======== -->
+<section id="services">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Services</div>
+      <h2 class="section-title">Ini Dia Jasa Gue! 💼</h2>
+      <p class="section-desc">Semua order dikerjain online (Pre-Order) dengan garansi revisi kalau ada yang nggak sesuai fungsinya.<br><i>note: jasa ini bisa meliputi projek IoT dan non-IoT</i></p>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="service-card">
+        <div class="service-icon">🔹</div>
+        <h3>Basic Project</h3>
+        <p>Cocok buat tugas sekolah/kuliah simpel dengan 1 sensor tunggal seperti suhu, jarak, atau cahaya.</p>
+        <span class="service-price">Rp 100.000 – 150.000</span>
+        <ul class="service-features">
+          <li>1 sensor / komponen utama</li>
+          <li>Serial monitor output</li>
+          <li>Source code + penjelasan singkat</li>
+          <li>Revisi fungsi gratis</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Intermediate Project</h3>
+        <p>2–3 sensor dengan komunikasi dasar WiFi/Bluetooth. Ideal buat proyek lomba atau tugas kuliah advanced.</p>
+        <span class="service-price">Rp 160.000 – 300.000</span>
+        <ul class="service-features">
+          <li>2–3 sensor terintegrasi</li>
+          <li>WiFi / Bluetooth comm</li>
+          <li>Integrasi Blynk / ThingSpeak</li>
+          <li>Revisi fungsi gratis</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚀</div>
+        <h3>Advanced Project</h3>
+        <p>Sistem kompleks dengan integrasi database, otomatisasi, dan multi-device. Cocok buat skripsi & bisnis IoT.</p>
+        <span class="service-price">Rp 350.000 – 600.000</span>
+        <ul class="service-features">
+          <li>Multi-sensor + actuator</li>
+          <li>Database cloud (Firebase/MySQL)</li>
+          <li>Dashboard monitoring</li>
+          <li>Dokumentasi lengkap</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎥</div>
+        <h3>Editing Video</h3>
+        <p>Editing video ringan sesuai kebutuhan dan selera, dapat direvisi sesuai keinginan/selera elo. Yg penting lo puas bray!</p>
+        <span class="service-price">Rp 50.000 – Menyesuaikan</span>
+        <ul class="service-features">
+          <li>Tugas sekolah</li>
+          <li>Konten Video</li>
+          <li>Cinematic Film</li>
+        </ul>
+      </div>
+    </div>
+    <div class="addon-box fade-up">
+      <h3>🧩 Add-On / Fitur Tambahan (untuk projek IoT)</h3>
+      <div class="addon-grid">
+        <div class="addon-item"><span>📘</span> Penjelasan detail coding — <strong>Rp55.000</strong></div>
+        <div class="addon-item"><span>💬</span> Penjelasan singkat coding — <strong>Rp25.000</strong></div>
+        <div class="addon-item"><span>🧰</span> Konsultasi online — <strong>Rp20.000</strong></div>
+        <div class="addon-item"><span>🎞</span> Penjelasan PPT — <strong>Rp25.000</strong></div>
+        <div class="addon-item"><span>📄</span> Penjelasan Word — <strong>Rp15.000</strong></div>
+        <div class="addon-item"><span>💠</span> Paket All-in-One — <strong>+Rp80.000</strong></div>
+      </div>
+      <div style="margin-top:1.5rem;text-align:center;">
+        <a href="https://wa.me/6287870330366?text=Halo%21%20Saya%20mau%20pesan%20jasa%20coding%20IoT%20dari%20Anan." target="_blank" class="btn-primary">💬 Order via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== PROJECTS ======== -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">Project Pilihan 📁</h2>
+      <p class="section-desc">Beberapa project yang udah gue kerjain — dari proyek pribadi, lomba, sampe kolaborasi.</p>
+    </div>
+    <div class="projects-grid fade-up">
+      <div class="project-card">
+        <img src="src/smart-temp.jpg" class="project-img" alt="Smart Temp"
+          onerror="this.outerHTML='<div class=\'project-img\'><div class=\'project-img-placeholder\'>🌡️</div></div>'">
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">ESP8266</span><span class="project-tag">IoT</span><span class="project-tag">Firebase</span></div>
+          <h3>Smart Temperature & Humidity Monitor</h3>
+          <p>Monitoring suhu & kelembaban real-time menggunakan sensor DHT22 + WeMos D1 Mini dengan integrasi cloud Firebase.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img" style="font-size:3rem;">🎮</div>
+        <div class="project-body">
+          <video controls class="project-video">
+            <source src="video/gyroscope.mp4" type="video/mp4">
+          </video>
+          <div class="project-tags"><span class="project-tag">Arduino</span><span class="project-tag">MPU6050</span><span class="project-tag">Processing</span></div>
+          <h3>Gyroscope 3D Digital Control</h3>
+          <p>Sensor gyroscope MPU6050 mengontrol gerakan object 3D secara digital real-time menggunakan Processing IDE.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img" style="font-size:3rem;">📡</div>
+        <div class="project-body">
+          <video controls class="project-video">
+            <source src="video/ultrasonic-radar.mp4" type="video/mp4">
+          </video>
+          <div class="project-tags"><span class="project-tag">Arduino</span><span class="project-tag">HC-SR04</span><span class="project-tag">Servo</span></div>
+          <h3>Ultrasonic Radar System</h3>
+          <p>Sistem radar berbasis Arduino menggunakan sensor HC-SR04 dan servo motor untuk deteksi objek + visualisasi radar.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="src/smart-garden.jpg" class="project-img" alt="Smart Garden"
+          onerror="this.outerHTML='<div class=\'project-img\'><div class=\'project-img-placeholder\'>🌱</div></div>'">
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">ESP32</span><span class="project-tag">LoRa</span><span class="project-tag">Firebase</span><span class="project-tag">Kolaborasi</span></div>
+          <h3>MEGA Project — Smart Garden 🌱</h3>
+          <p>Sistem pengiriman data dual-mode untuk pertanian rural berbasis mikrokontroler. Kombinasi jaringan lokal & internet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== TESTIMONI ======== -->
+<section id="testimoni">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Rating Kepuasan Pelanggan</div>
+      <h2 class="section-title">"Kata Mereka" 🔥</h2>
+      <p class="section-desc">Testimoni nyata dari mereka yang udah order jasa gue. Gak direkayasa, gak dibayar! 😂</p>
+    </div>
+
+    <!-- SLIDER WRAPPER -->
+    <div class="testi-slider-wrap fade-up">
+      <div class="testi-track" id="testiTrack">
+
+        <!-- CARD 1 -->
+        <div class="testi-card">
+          <div class="testi-img-wrap">
+            <img src="src/testimoni1.jpeg" alt="Testimoni 1"
+              onerror="this.src=''; this.parentElement.innerHTML='<div class=\'testi-img-placeholder\'>📸</div>'">
+          </div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <div class="testi-badge">Verified Order</div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="testi-card">
+          <div class="testi-img-wrap">
+            <img src="src/testimoni2.jpeg" alt="Testimoni 2"
+              onerror="this.src=''; this.parentElement.innerHTML='<div class=\'testi-img-placeholder\'>📸</div>'">
+          </div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <div class="testi-badge">Verified Order</div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="testi-card">
+          <div class="testi-img-wrap">
+            <img src="src/testimoni3.jpeg" alt="Testimoni 3"
+              onerror="this.src=''; this.parentElement.innerHTML='<div class=\'testi-img-placeholder\'>📸</div>'">
+          </div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <div class="testi-badge">Verified Order</div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="testi-card">
+          <div class="testi-img-wrap">
+            <img src="src/testimoni4.jpeg" alt="Testimoni 4"
+              onerror="this.src=''; this.parentElement.innerHTML='<div class=\'testi-img-placeholder\'>📸</div>'">
+          </div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <div class="testi-badge">Verified Order</div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="testi-card">
+          <div class="testi-img-wrap">
+            <img src="src/testimoni5.jpeg" alt="Testimoni 5"
+              onerror="this.src=''; this.parentElement.innerHTML='<div class=\'testi-img-placeholder\'>📸</div>'">
+          </div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <div class="testi-badge">Verified Order</div>
+        </div>
+
+      </div><!-- end testi-track -->
+
+      <!-- NAV ARROWS -->
+      <button class="testi-arrow testi-prev" onclick="testiSlide(-1)" aria-label="Prev">&#8249;</button>
+      <button class="testi-arrow testi-next" onclick="testiSlide(1)" aria-label="Next">&#8250;</button>
+
+      <!-- DOTS -->
+      <div class="testi-dots" id="testiDots"></div>
+    </div>
+
+    <!-- CTA -->
+    <div class="testi-cta fade-up">
+      <p>Mau order & jadi bagian dari klien puas gue? 😎</p>
+      <a href="https://wa.me/6287870330366?text=Halo%21%20Saya%20mau%20order%20jasa%20Anan!" target="_blank" class="btn-primary">💬 Order Sekarang</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== CONTACT + FEEDBACK ======== -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let's Connect 📬</h2>
+      <p class="section-desc">Ada project menarik? Mau order jasa? Atau sekadar ngobrol soal IoT? Hit me up!</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-links fade-up">
+        <a href="https://wa.me/6287870330366" target="_blank" class="contact-link">
+          <span class="contact-link-icon">💬</span>
+          <div><div class="contact-link-label">WhatsApp (Order & Konsultasi)</div><div class="contact-link-val">+62 878-7033-0366</div></div>
+        </a>
+        <a href="https://instagram.com/arcdit_" target="_blank" class="contact-link">
+          <span class="contact-link-icon">📸</span>
+          <div><div class="contact-link-label">Instagram Personal</div><div class="contact-link-val">@arcdit_</div></div>
+        </a>
+        <a href="https://instagram.com/arcodes.id" target="_blank" class="contact-link">
+          <span class="contact-link-icon">💡</span>
+          <div><div class="contact-link-label">Instagram Business</div><div class="contact-link-val">@arcodes.id</div></div>
+        </a>
+        <a href="https://tiktok.com/@arcnan_" target="_blank" class="contact-link">
+          <span class="contact-link-icon">🎵</span>
+          <div><div class="contact-link-label">TikTok</div><div class="contact-link-val">@arcnan_</div></div>
+        </a>
+        <a href="https://github.com/Ardaito-IoTdev" target="_blank" class="contact-link">
+          <span class="contact-link-icon">💻</span>
+          <div><div class="contact-link-label">GitHub</div><div class="contact-link-val">Ardaito-IoTdev</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/arnandito-fernanda-08907036a" target="_blank" class="contact-link">
+          <span class="contact-link-icon">💼</span>
+          <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">Arnandito Fernanda</div></div>
+        </a>
+      </div>
+
+      <div id="feedback" class="fade-up">
+        <div class="feedback-form">
+          <div class="form-title">💬 Forum Saran & Pendapat</div>
+          <div class="form-sub">Pesan lo langsung masuk ke database & notif Telegram gue yaa cuy. Real-time boss!</div>
+          <div class="form-group">
+            <label>Nama</label>
+            <input type="text" id="f-name" placeholder="Nama lo (boleh anonymous). klo bisa jangan ya, gimana bisa kenal? 😅">
+          </div>
+          <div class="form-group">
+            <label>Kategori</label>
+            <select id="f-cat">
+              <option value="saran">💡 Saran untuk Website</option>
+              <option value="feedback">⭐ Feedback Proyek IoT</option>
+              <option value="order">🛒 Mau Order Jasa</option>
+              <option value="kolaborasi">🤝 Ajak Kolaborasi</option>
+              <option value="lainnya">💬 Lainnya</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Pesan</label>
+            <textarea id="f-msg" placeholder="Tulis pendapat, saran, ngeluh, confess :V, atau pertanyaan lo di sini..."></textarea>
+          </div>
+          <button class="btn-primary" onclick="submitFeedback()" id="submit-btn" style="width:100%;">🚀 Kirim Pesan</button>
+          <div class="form-status" id="form-status"></div>
+          <div class="recent-msgs">
+            <div class="recent-msgs-title">Pesan Terbaru</div>
+            <div id="msgs-container"><div class="msgs-empty">Loading pesan...</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer>
+  <p>© 2025 <span>Anandito Ernanda</span> — Built with 🔥 for IoT & Web. Arcodes.my.id</p>
+</footer>
+
+<!-- Firebase Compat SDK -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-app-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-database-compat.min.js"></script>
+<script src="animate.js"></script>
+
+</body>
+</html>
